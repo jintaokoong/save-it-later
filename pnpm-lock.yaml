@@ -11,6 +11,7 @@ specifiers:
   '@types/react-dom': ^17.0.0
   autoprefixer: ^9
   postcss: ^7
+  prettier: ^2.4.1
   react: ^17.0.2
   react-dom: ^17.0.2
   react-scripts: 4.0.3
@@ -36,6 +37,7 @@ dependencies:
 devDependencies:
   autoprefixer: 9.8.8
   postcss: 7.0.39
+  prettier: 2.4.1
   tailwindcss: /@tailwindcss/postcss7-compat/2.2.17
 
 packages:
@@ -9312,6 +9314,12 @@ packages:
     resolution: {integrity: sha1-1PRWKwzjaW5BrFLQ4ALlemNdxtw=}
     engines: {node: '>=0.10.0'}
     dev: false
+
+  /prettier/2.4.1:
+    resolution: {integrity: sha512-9fbDAXSBcc6Bs1mZrDYb3XKzDLm4EXXL9sC1LqKP5rZkT6KRr/rf9amVUcODVXgguK/isJz0d0hP72WeaKWsvA==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
+    dev: true
 
   /pretty-bytes/5.6.0:
     resolution: {integrity: sha512-FFw039TmrBqFK8ma/7OL3sDz/VytdtJr044/QUJtH0wK9lb9jLq9tJyIxUwtQJHwar2BqtiA4iCWSwo9JLkzFg==}
