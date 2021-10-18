@@ -62,7 +62,7 @@ function App() {
             disabled={!formik.isValid || formik.isSubmitting}
             loading={formik.isSubmitting}
             className={
-              'flex justify-center p-2 transition duration-500 ease-in-out bg-blue-300 disabled:bg-blue-50 disabled:cursor-not-allowed disabled:text-blue-500 text-blue-900 rounded hover:bg-blue-200 active:bg-blue-300'
+              'mt-2 flex justify-center p-2 transition duration-500 ease-in-out bg-blue-300 disabled:bg-blue-50 disabled:cursor-not-allowed disabled:text-blue-500 text-blue-900 rounded hover:bg-blue-200 active:bg-blue-300'
             }
           >
             Login
