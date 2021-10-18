@@ -5,6 +5,7 @@ import { auth } from 'config/firebase';
 import LoginValidation from 'validations/login-validation';
 
 import Input from 'components/form/input';
+import PrimaryButton from 'components/form/primary-button';
 
 function App() {
   const formik = useFormik({
@@ -56,15 +57,16 @@ function App() {
               onChange={formik.handleChange}
             />
           </div>
-          <button
+          <PrimaryButton
             type={'submit'}
             disabled={!formik.isValid || formik.isSubmitting}
+            loading={formik.isSubmitting}
             className={
-              'p-2 transition duration-500 ease-in-out bg-blue-300 disabled:bg-blue-50 disabled:cursor-not-allowed disabled:text-blue-500 text-blue-900 rounded hover:bg-blue-200 active:bg-blue-300'
+              'flex justify-center p-2 transition duration-500 ease-in-out bg-blue-300 disabled:bg-blue-50 disabled:cursor-not-allowed disabled:text-blue-500 text-blue-900 rounded hover:bg-blue-200 active:bg-blue-300'
             }
           >
             Login
-          </button>
+          </PrimaryButton>
         </form>
       </div>
     </div>
