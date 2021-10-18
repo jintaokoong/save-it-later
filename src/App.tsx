@@ -38,7 +38,7 @@ function App() {
               onChange={formik.handleChange}
               value={formik.values.email}
               className={`${
-                formik.errors.email ? 'bg-red-100' : 'bg-gray-100'
+                formik.errors.email ? 'bg-red-50' : 'bg-gray-100'
               } focus:outline-none rounded py-2.5 px-3`}
             />
             {formik.errors.email && (
@@ -55,7 +55,7 @@ function App() {
               value={formik.values.password}
               onChange={formik.handleChange}
               className={`${
-                formik.errors.password ? 'bg-red-100' : 'bg-gray-100'
+                formik.errors.password ? 'bg-red-50' : 'bg-gray-100'
               } focus:outline-none rounded py-2.5 px-3`}
             />
             {formik.errors.password && (
@@ -68,7 +68,7 @@ function App() {
             type={'submit'}
             disabled={!formik.isValid || formik.isSubmitting}
             className={
-              'p-2 bg-blue-300 disabled:bg-blue-50 disabled:cursor-not-allowed disabled:text-blue-500 text-blue-900 rounded hover:bg-blue-200 active:bg-blue-300'
+              'p-2 transition duration-500 ease-in-out bg-blue-300 disabled:bg-blue-50 disabled:cursor-not-allowed disabled:text-blue-500 text-blue-900 rounded hover:bg-blue-200 active:bg-blue-300'
             }
           >
             Login
