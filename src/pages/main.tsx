@@ -5,6 +5,8 @@ import { Fragment, useRef, useState } from 'react';
 import classNames from 'classnames';
 import useOutside from 'hooks/use-outside';
 import { auth } from 'config/firebase';
+import { useSetRecoilState } from 'recoil';
+import { addArticleModalAtom } from 'store/add-article-modal';
 
 const MainPage = () => {
   const [open, setOpen] = useState(false);
@@ -12,10 +14,11 @@ const MainPage = () => {
   useOutside(ref, open, () => {
     setOpen((o) => !o);
   });
+  const setModalOpen = useSetRecoilState(addArticleModalAtom);
 
   return (
     <Fragment>
-      <nav className={'container mx-auto flex justify-between p-3'}>
+      <nav className={'container mx-auto flex justify-between py-3 px-5'}>
         <div className={'branding font-bold inline-flex self-center'}>
           <Link to={'/'}>Save It Later</Link>
         </div>
@@ -27,6 +30,7 @@ const MainPage = () => {
             className={
               'font-bold py-1 px-3 mr-2 transition duration-500 ease-in-out bg-blue-300 disabled:bg-blue-50 disabled:cursor-not-allowed disabled:text-blue-500 text-blue-900 rounded-full hover:bg-blue-200 active:bg-blue-300'
             }
+            onClick={() => setModalOpen(true)}
           >
             +
           </button>
