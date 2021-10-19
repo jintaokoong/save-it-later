@@ -4,6 +4,7 @@ import ArticleDetailPage from 'pages/article-detail';
 import { Fragment, useRef, useState } from 'react';
 import classNames from 'classnames';
 import useOutside from 'hooks/use-outside';
+import { auth } from 'config/firebase';
 
 const MainPage = () => {
   const [open, setOpen] = useState(false);
@@ -44,14 +45,19 @@ const MainPage = () => {
             >
               <div className={'py-1'}>
                 <div
-                  className={'text-gray-700 block px-4 py-2 text-sm'}
+                  className={
+                    'cursor-pointer text-gray-700 block px-4 py-2 text-sm'
+                  }
                   role={'menuitem'}
                 >
                   Account settings
                 </div>
                 <div
-                  className={'text-gray-700 block px-4 py-2 text-sm'}
+                  className={
+                    'cursor-pointer text-gray-700 block px-4 py-2 text-sm'
+                  }
                   role={'menuitem'}
+                  onClick={() => auth.signOut()}
                 >
                   Sign Out
                 </div>
