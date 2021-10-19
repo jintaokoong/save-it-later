@@ -7,9 +7,6 @@ const ArticleDetailPage = () => {
 
   useEffect(() => {
     if (id) {
-      console.log(
-        `${process.env.REACT_APP_BASEURL}/article/${id}?key=${process.env.REACT_APP_APIKEY}`
-      );
       fetch(
         `${process.env.REACT_APP_BASEURL}/article/${id}?key=${process.env.REACT_APP_APIKEY}`
       )
