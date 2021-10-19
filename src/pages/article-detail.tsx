@@ -18,7 +18,7 @@ const ArticleDetailPage = () => {
   return (
     <Fragment>
       <div
-        className={'max-w-2xl mx-auto p-5'}
+        className={'max-w-2xl mx-auto overflow-hidden'}
         dangerouslySetInnerHTML={{ __html: content }}
       />
     </Fragment>
