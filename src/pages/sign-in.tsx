@@ -6,8 +6,10 @@ import LoginValidation from 'validations/login-validation';
 
 import Input from 'components/form/input';
 import PrimaryButton from 'components/form/primary-button';
+import { useHistory } from 'react-router-dom';
 
 const SignInPage = () => {
+  const history = useHistory();
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -16,7 +18,9 @@ const SignInPage = () => {
     validationSchema: LoginValidation,
     onSubmit: (v, h) => {
       signInWithEmailAndPassword(auth, v.email, v.password)
-        .then((value) => console.log(value))
+        .then(() => {
+          history.push('/main/article');
+        })
         .catch((err) => {
           console.error(JSON.stringify(err));
         })
@@ -31,7 +35,7 @@ const SignInPage = () => {
       <div className={'m-auto p-6 rounded shadow-xl'}>
         <h1
           className={
-            'text-xl mb-4 text-gray-700 text-center font-bold si-header'
+            'text-xl mb-4 text-gray-700 text-center font-bold branding'
           }
         >
           Login
