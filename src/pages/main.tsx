@@ -1,10 +1,17 @@
-import { auth } from 'config/firebase';
 import { Link, Route, Switch } from 'react-router-dom';
 import ArticlePage from 'pages/article';
 import ArticleDetailPage from 'pages/article-detail';
-import { Fragment } from 'react';
+import { Fragment, useRef, useState } from 'react';
+import classNames from 'classnames';
+import useOutside from 'hooks/use-outside';
 
 const MainPage = () => {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement | null>(null);
+  useOutside(ref, open, () => {
+    setOpen((o) => !o);
+  });
+
   return (
     <Fragment>
       <nav className={'container mx-auto flex justify-between p-3'}>
@@ -22,15 +29,35 @@ const MainPage = () => {
           >
             +
           </button>
-          <button
-            className={
-              'p-1 px-3 transition duration-500 ease-in-out bg-red-300 disabled:bg-red-50 disabled:cursor-not-allowed disabled:text-red-500 text-red-900 rounded hover:bg-red-200 active:bg-red-300'
-            }
-            type={'button'}
-            onClick={() => auth.signOut()}
-          >
-            Logout
-          </button>
+          <div className='relative inline-flex self-center text-left'>
+            <button
+              type={'button'}
+              className={'bg-gray-400 rounded-full w-8 h-8'}
+              onClick={() => setOpen((o) => !o)}
+            />
+            <div
+              ref={ref}
+              className={classNames(
+                { hidden: !open },
+                'origin-top-right absolute right-0 mt-10 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none'
+              )}
+            >
+              <div className={'py-1'}>
+                <div
+                  className={'text-gray-700 block px-4 py-2 text-sm'}
+                  role={'menuitem'}
+                >
+                  Account settings
+                </div>
+                <div
+                  className={'text-gray-700 block px-4 py-2 text-sm'}
+                  role={'menuitem'}
+                >
+                  Sign Out
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </nav>
       <div className={'container mx-auto p-5'}>
