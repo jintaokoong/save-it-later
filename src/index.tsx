@@ -2,10 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import './index.css';
+import 'config/firebase';
 import { BrowserRouter } from 'react-router-dom';
+import { RecoilRoot } from 'recoil';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { RecoilRoot } from 'recoil';
 
 ReactDOM.render(
   <React.StrictMode>

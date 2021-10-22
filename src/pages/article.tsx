@@ -1,17 +1,18 @@
-import { Fragment, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import classNames from 'classnames';
 import Input from 'components/form/input';
 import PrimaryButton from 'components/form/primary-button';
+import { useFormik } from 'formik';
+import useArticles from 'hooks/api/use-articles';
+import { Fragment } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { addArticleModalAtom } from 'store/add-article-modal';
-import classNames from 'classnames';
-import { useFormik } from 'formik';
-import AddUrlValidation from 'validations/add-url-validation';
 import { classnames } from 'tailwindcss-classnames';
+import AddUrlValidation from 'validations/add-url-validation';
 
 const ArticlePage = () => {
   const history = useHistory();
-  const [articles, setArticles] = useState<any[]>([]);
+  const { data } = useArticles();
 
   const formik = useFormik({
     initialValues: {
@@ -39,18 +40,10 @@ const ArticlePage = () => {
   });
   const [modalOpen, setModalOpen] = useRecoilState(addArticleModalAtom);
 
-  useEffect(() => {
-    fetch(
-      `${process.env.REACT_APP_BASEURL}/article?key=${process.env.REACT_APP_APIKEY}`
-    )
-      .then((res) => res.json())
-      .then((body) => setArticles(body));
-  }, []);
-
   return (
     <Fragment>
       <div className={'grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4'}>
-        {articles.map((a, index) => (
+        {data?.map((a, index) => (
           <div
             className={
               'transition duration-200 p-4 rounded shadow-md hover:shadow-xl cursor-pointer'

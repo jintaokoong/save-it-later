@@ -1,5 +1,6 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import { Redirect, Route } from 'react-router-dom';
+import 'config/axios';
 import SignInPage from 'pages/sign-in';
 import MainPage from 'pages/main';
 import Gatekeeper from 'components/authentication/gatekeeper';

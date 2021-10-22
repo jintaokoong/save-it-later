@@ -23,9 +23,6 @@ const MainPage = () => {
           <Link to={'/'}>Save It Later</Link>
         </div>
         <div className={'flex items-center'}>
-          {/*<div className={'hidden sm:block text-blue-900 mr-3'}>
-            {auth.currentUser?.email}
-          </div>*/}
           <button
             className={
               'font-bold py-1 px-3 mr-2 transition duration-500 ease-in-out bg-blue-300 disabled:bg-blue-50 disabled:cursor-not-allowed disabled:text-blue-500 text-blue-900 rounded-full hover:bg-blue-200 active:bg-blue-300'
