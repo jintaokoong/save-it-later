@@ -1,9 +1,20 @@
-import { useEffect } from 'react';
+import { MutableRefObject, useEffect } from 'react';
 
-const useOutside = (ref: any, open: boolean, callback: () => void) => {
+const useOutside = (
+  ref: MutableRefObject<HTMLDivElement | null>,
+  btnRef: MutableRefObject<HTMLButtonElement | null>,
+  open: boolean,
+  callback: () => void
+) => {
   useEffect(() => {
     const handleClickOutside = (event: any) => {
-      if (ref.current && !ref.current.contains(event.target) && open) {
+      if (
+        ref.current &&
+        btnRef.current &&
+        !btnRef.current.contains(event.target) &&
+        !ref.current.contains(event.target) &&
+        open
+      ) {
         callback();
       }
     };
@@ -14,7 +25,7 @@ const useOutside = (ref: any, open: boolean, callback: () => void) => {
       // Unbind the event listener on clean up
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [ref, open, callback]);
+  }, [ref, btnRef, open, callback]);
 };
 
 export default useOutside;

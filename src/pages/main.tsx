@@ -11,7 +11,8 @@ import { addArticleModalAtom } from 'store/add-article-modal';
 const MainPage = () => {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement | null>(null);
-  useOutside(ref, open, () => {
+  const btnRef = useRef<HTMLButtonElement | null>(null);
+  useOutside(ref, btnRef, open, () => {
     setOpen((o) => !o);
   });
   const setModalOpen = useSetRecoilState(addArticleModalAtom);
@@ -33,6 +34,7 @@ const MainPage = () => {
           </button>
           <div className='relative inline-flex self-center text-left'>
             <button
+              ref={btnRef}
               type={'button'}
               className={'bg-gray-400 rounded-full w-8 h-8'}
               onClick={() => setOpen((o) => !o)}
