@@ -19,7 +19,7 @@ const MainPage = () => {
   return (
     <Fragment>
       <nav className={'container mx-auto flex justify-between py-3 px-5'}>
-        <div className={'branding font-bold inline-flex self-center'}>
+        <div className={'branding text-lg font-bold inline-flex self-center'}>
           <Link to={'/'}>Save It Later</Link>
         </div>
         <div className={'flex items-center'}>
@@ -50,7 +50,7 @@ const MainPage = () => {
               <div className={'py-1'}>
                 <div
                   className={
-                    'cursor-pointer text-gray-700 block px-4 py-2 text-sm'
+                    'cursor-pointer transition duration-300 active:bg-gray-300 rounded-md hover:bg-gray-100 py-2 px-2 text-gray-900 block mx-2 my-1 text-sm'
                   }
                   role={'menuitem'}
                 >
@@ -58,7 +58,7 @@ const MainPage = () => {
                 </div>
                 <div
                   className={
-                    'cursor-pointer text-gray-700 block px-4 py-2 text-sm'
+                    'cursor-pointer transition duration-300 active:bg-gray-300 rounded-md hover:bg-gray-100 py-2 px-2 text-gray-900 block mx-2 my-1 text-sm'
                   }
                   role={'menuitem'}
                   onClick={() => auth.signOut()}
