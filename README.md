@@ -1,6 +1,20 @@
-# Getting Started with Create React App
+# Getting Started
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Configure .env file
+
+Set Firebase configurations in .env.
+
+```
+REACT_APP_FIREBASE_API_KEY=APIKEY
+REACT_APP_FIREBASE_AUTH_DOMAIN=AUTH_DOMAIN
+REACT_APP_FIREBASE_PROJECT_ID=PROJECT_ID
+REACT_APP_FIREBASE_STORAGE_BUCKET=STORAGE_BUCKET
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID=MESSAGING_SENDER_ID
+REACT_APP_APP_ID=APP_ID
+REACT_APP_MEASUREMENT_ID=MEASUREMENT_ID
+REACT_APP_BASEURL=BACKEND_BASEURL
+REACT_APP_APIKEY=API_KEY
+```
 
 ## Available Scripts
 
