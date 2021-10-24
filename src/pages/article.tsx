@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import Input from 'components/form/input';
 import PrimaryButton from 'components/form/primary-button';
+import { axiosInstance } from 'config/axios';
 import { useFormik } from 'formik';
 import useArticles from 'hooks/api/use-articles';
 import { Fragment } from 'react';
@@ -20,15 +21,7 @@ const ArticlePage = () => {
     },
     validationSchema: AddUrlValidation,
     onSubmit: (v, h) => {
-      fetch(
-        `${process.env.REACT_APP_BASEURL}/article?key=${process.env.REACT_APP_APIKEY}`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(v),
-        }
-      )
-        .then((res) => res.json())
+      axiosInstance.post('article', v)
         .then((_) => {
           setModalOpen(false);
         })
