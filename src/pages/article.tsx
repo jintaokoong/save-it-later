@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import Input from 'components/form/input';
 import PrimaryButton from 'components/form/primary-button';
-import { axiosInstance } from 'config/axios';
 import { useFormik } from 'formik';
+import useAddArticle from 'hooks/api/use-add-article';
 import useArticles from 'hooks/api/use-articles';
 import { Fragment } from 'react';
 import { useHistory } from 'react-router-dom';
@@ -14,6 +14,7 @@ import AddUrlValidation from 'validations/add-url-validation';
 const ArticlePage = () => {
   const history = useHistory();
   const { data } = useArticles();
+  const { mutate } = useAddArticle();
 
   const formik = useFormik({
     initialValues: {
@@ -21,14 +22,17 @@ const ArticlePage = () => {
     },
     validationSchema: AddUrlValidation,
     onSubmit: (v, h) => {
-      axiosInstance.post('article', v)
-        .then((_) => {
+      mutate(v.url, {
+        onSuccess: () => {
           setModalOpen(false);
-        })
-        .catch((err) => console.error(err))
-        .finally(() => {
+        },
+        onError: (err) => {
+          console.error(err);
+        },
+        onSettled: () => {
           h.setSubmitting(false);
-        });
+        },
+      });
     },
   });
   const [modalOpen, setModalOpen] = useRecoilState(addArticleModalAtom);

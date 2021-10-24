@@ -7,13 +7,18 @@ import { BrowserRouter } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { QueryClientProvider, QueryClient } from 'react-query';
+
+const client = new QueryClient();
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <RecoilRoot>
-        <App />
-      </RecoilRoot>
+      <QueryClientProvider client={client}>
+        <RecoilRoot>
+          <App />
+        </RecoilRoot>
+      </QueryClientProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
